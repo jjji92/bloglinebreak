@@ -1,0 +1,6 @@
+# ads.txt
+# 본 파일은 Google AdSense 승인/연동 후 Publisher ID가 발급되면 업데이트하세요.
+# (승인 전에는 아래 예시 라인을 "주석 해제하지 마세요".)
+#
+# 예시:
+# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0

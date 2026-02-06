@@ -4,6 +4,7 @@ import { SITE_NAME, SITE_OWNER, getCanonicalUrl } from "../siteConfig";
 
 function TermsPage() {
   const canonical = getCanonicalUrl("/terms");
+  const effectiveDate = "2026-02-06";
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-6 space-y-6">
@@ -25,6 +26,7 @@ function TermsPage() {
           본 약관은 {SITE_NAME}(이하 &quot;본 서비스&quot;) 이용과 관련하여 이용자와
           운영자 간 권리·의무 및 책임사항을 규정합니다.
         </p>
+        <p className="text-[11px] text-slate-500">시행일: {effectiveDate}</p>
       </header>
 
       <section className="space-y-3 text-xs text-slate-700 leading-relaxed">
@@ -63,7 +65,16 @@ function TermsPage() {
       </section>
 
       <section className="space-y-3 text-xs text-slate-700 leading-relaxed">
-        <h2 className="font-semibold text-slate-900">5. 면책</h2>
+        <h2 className="font-semibold text-slate-900">5. 서비스 변경 및 중단</h2>
+        <p>
+          운영자는 서비스 품질 개선 및 정책 준수를 위해 기능/화면 구성을 변경하거나
+          일부 기능을 중단할 수 있습니다. 가능한 범위 내에서 서비스 내 공지 등을 통해
+          안내합니다.
+        </p>
+      </section>
+
+      <section className="space-y-3 text-xs text-slate-700 leading-relaxed">
+        <h2 className="font-semibold text-slate-900">6. 면책</h2>
         <p>
           운영자는 본 서비스 이용으로 인해 발생하는 직·간접 손해에 대해 법령이
           허용하는 범위 내에서 책임을 제한합니다. 다만 운영자의 고의 또는 중대한

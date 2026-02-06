@@ -10,6 +10,7 @@ import {
 function PrivacyPage() {
   const mailto = getContactMailto();
   const canonical = getCanonicalUrl("/privacy");
+  const effectiveDate = "2026-02-06";
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-6 space-y-6">
@@ -30,6 +31,9 @@ function PrivacyPage() {
         <p className="text-sm text-slate-600">
           네이버 블로그 줄바꿈 정리 도구(이하 &quot;본 서비스&quot;)는 이용자의
           개인정보를 수집·저장하지 않는 것을 원칙으로 합니다.
+        </p>
+        <p className="text-[11px] text-slate-500">
+          시행일: {effectiveDate}
         </p>
       </header>
 
@@ -74,14 +78,34 @@ function PrivacyPage() {
           4. 광고 노출 및 쿠키 사용
         </h2>
         <p>
-          본 서비스는 운영을 위해 광고(예: Google AdSense)를 노출할 수 있으며, 그
-          과정에서 Google 또는 제3자 광고 제공자가 브라우저 쿠키 등을 사용할 수
-          있습니다.
+          본 서비스는 운영을 위해 광고(예: Google AdSense)를 노출할 수 있습니다.
+          광고가 활성화된 경우, Google 또는 제3자 광고 제공자가 쿠키(예: DoubleClick
+          쿠키) 및 유사 기술을 사용하여 맞춤형/비맞춤형 광고를 제공할 수 있습니다.
         </p>
-        <p>
-          Google 광고 및 쿠키 사용에 대한 보다 자세한 내용은 Google
-          광고정책·개인정보보호정책을 참고해 주시기 바랍니다.
-        </p>
+        <ul className="list-disc list-inside space-y-1">
+          <li>
+            Google이 사이트/앱에서 수집한 정보를 사용하는 방식 안내:{" "}
+            <a
+              href="https://policies.google.com/technologies/partner-sites"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="text-emerald-700 hover:underline"
+            >
+              Google 파트너 사이트 정책
+            </a>
+          </li>
+          <li>
+            맞춤 광고 설정/해제:{" "}
+            <a
+              href="https://adssettings.google.com"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="text-emerald-700 hover:underline"
+            >
+              Google 광고 설정
+            </a>
+          </li>
+        </ul>
       </section>
 
       <section className="space-y-3 text-xs text-slate-700 leading-relaxed">

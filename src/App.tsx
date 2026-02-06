@@ -112,6 +112,18 @@ function App() {
             >
               소개
             </NavLink>
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                `${navLinkBase} ${
+                  isActive
+                    ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+                    : "text-slate-600 hover:bg-slate-100"
+                }`
+              }
+            >
+              문의
+            </NavLink>
           </nav>
         </div>
       </header>

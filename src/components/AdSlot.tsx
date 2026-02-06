@@ -1,3 +1,5 @@
+import { ADS_ENABLED } from "../siteConfig";
+
 interface AdSlotProps {
   position: "top" | "bottom";
 }
@@ -5,8 +7,7 @@ interface AdSlotProps {
 function AdSlot({ position }: AdSlotProps) {
   // 에드센스 승인 전에는 "광고 자리표시자"가 오히려 품질을 떨어뜨려 보일 수 있어
   // 실제 광고 설정이 없는 경우에는 렌더링하지 않습니다.
-  const enabled = Boolean(import.meta.env.VITE_ENABLE_ADS);
-  if (!enabled) return null;
+  if (!ADS_ENABLED) return null;
 
   return (
     <div
