@@ -22,7 +22,7 @@ export const SITE_URL = (
  * - VITE_SITE_OWNER: 운영자/팀 이름 (선택)
  */
 export const CONTACT_EMAIL =
-  import.meta.env.VITE_CONTACT_EMAIL ?? "contact@bloglinebreak.com";
+  import.meta.env.VITE_CONTACT_EMAIL ?? "bloglinebreak@gmail.com";
 export const SITE_OWNER = import.meta.env.VITE_SITE_OWNER ?? "BlogLineBreak 운영팀";
 
 /**
