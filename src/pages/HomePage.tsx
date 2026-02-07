@@ -151,7 +151,9 @@ function HomePage() {
   const handleUseTemplate = (t: Template) => {
     setInput(t.text);
     setToast(`템플릿을 불러왔습니다: ${t.title}`);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
   };
 
   return (
