@@ -1,31 +1,53 @@
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { Link, NavLink, Route, Routes, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+
+const GA_ID = "G-X2HV3NQK91";
+
+function loadGoogleAnalytics() {
+  if (typeof window !== "undefined" && (window as Window & { gtag?: unknown }).gtag) return;
+  (window as Window & { dataLayer?: unknown[] }).dataLayer = (window as Window & { dataLayer?: unknown[] }).dataLayer || [];
+  const gtag = (...args: unknown[]) => (window as Window & { dataLayer?: unknown[] }).dataLayer?.push(args);
+  (window as Window & { gtag: typeof gtag }).gtag = gtag;
+  gtag("js", new Date());
+  gtag("config", GA_ID, { page_path: window.location.pathname });
+  const s = document.createElement("script");
+  s.async = true;
+  s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+  document.head.appendChild(s);
+}
 
 function usePageTracking() {
   const location = useLocation();
   useEffect(() => {
     if (typeof window.gtag === "function") {
-      window.gtag("config", "G-X2HV3NQK91", {
-        page_path: location.pathname,
-      });
+      window.gtag("config", GA_ID, { page_path: location.pathname });
     }
   }, [location]);
 }
-import HomePage from "./pages/HomePage";
-import GuidePage from "./pages/GuidePage";
-import ExamplesPage from "./pages/ExamplesPage";
-import PrivacyPage from "./pages/PrivacyPage";
-import TermsPage from "./pages/TermsPage";
-import AboutPage from "./pages/AboutPage";
-import ContactPage from "./pages/ContactPage";
-import FaqPage from "./pages/FaqPage";
+
+const HomePage = lazy(() => import("./pages/HomePage"));
+const GuidePage = lazy(() => import("./pages/GuidePage"));
+const ExamplesPage = lazy(() => import("./pages/ExamplesPage"));
+const PrivacyPage = lazy(() => import("./pages/PrivacyPage"));
+const TermsPage = lazy(() => import("./pages/TermsPage"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
+const FaqPage = lazy(() => import("./pages/FaqPage"));
 
 const navLinkBase =
   "px-3 py-1.5 text-sm rounded-full transition-colors border border-transparent";
 
 function App() {
   usePageTracking();
+  useEffect(() => {
+    const run = () => loadGoogleAnalytics();
+    if (typeof requestIdleCallback !== "undefined") {
+      requestIdleCallback(run, { timeout: 2500 });
+    } else {
+      setTimeout(run, 1);
+    }
+  }, []);
   return (
     <div className="min-h-screen flex flex-col">
       <Helmet>
@@ -142,35 +164,37 @@ function App() {
       </header>
 
       <main className="flex-1">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/guide" element={<GuidePage />} />
-          <Route path="/examples" element={<ExamplesPage />} />
-          <Route path="/privacy" element={<PrivacyPage />} />
-          <Route path="/terms" element={<TermsPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/faq" element={<FaqPage />} />
-          <Route
-            path="*"
-            element={
-              <div className="max-w-3xl mx-auto px-4 py-10 space-y-3">
-                <h1 className="text-lg font-semibold text-slate-900">
-                  페이지를 찾을 수 없습니다.
-                </h1>
-                <p className="text-sm text-slate-600">
-                  주소가 변경되었거나 삭제되었을 수 있습니다.
-                </p>
-                <Link
-                  to="/"
-                  className="inline-flex items-center gap-1 rounded-md bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-medium px-3 py-1.5 transition-colors w-fit"
-                >
-                  홈으로 이동
-                </Link>
-              </div>
-            }
-          />
-        </Routes>
+        <Suspense fallback={null}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/guide" element={<GuidePage />} />
+            <Route path="/examples" element={<ExamplesPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/terms" element={<TermsPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/faq" element={<FaqPage />} />
+            <Route
+              path="*"
+              element={
+                <div className="max-w-3xl mx-auto px-4 py-10 space-y-3">
+                  <h1 className="text-lg font-semibold text-slate-900">
+                    페이지를 찾을 수 없습니다.
+                  </h1>
+                  <p className="text-sm text-slate-600">
+                    주소가 변경되었거나 삭제되었을 수 있습니다.
+                  </p>
+                  <Link
+                    to="/"
+                    className="inline-flex items-center gap-1 rounded-md bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-medium px-3 py-1.5 transition-colors w-fit"
+                  >
+                    홈으로 이동
+                  </Link>
+                </div>
+              }
+            />
+          </Routes>
+        </Suspense>
       </main>
 
       <footer className="border-t bg-white">
