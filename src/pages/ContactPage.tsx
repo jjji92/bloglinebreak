@@ -41,7 +41,7 @@ function ContactPage() {
             <p>
               <a
                 href={mailto}
-                className="font-mono text-emerald-700 hover:underline"
+                className="font-mono underline text-emerald-800 hover:text-emerald-700"
               >
                 {CONTACT_EMAIL}
               </a>
@@ -79,18 +79,18 @@ function ContactPage() {
         <ul className="list-disc list-inside space-y-1">
           <li>
             개인정보 관련 내용은{" "}
-            <Link to="/privacy" className="text-emerald-700 hover:underline">
+            <Link to="/privacy" className="underline text-emerald-800 hover:text-emerald-700">
               개인정보 처리방침
             </Link>
             에서 먼저 확인해 주세요.
           </li>
           <li>
             사용법/예시는{" "}
-            <Link to="/guide" className="text-emerald-700 hover:underline">
+            <Link to="/guide" className="underline text-emerald-800 hover:text-emerald-700">
               가이드
             </Link>
             ,{" "}
-            <Link to="/examples" className="text-emerald-700 hover:underline">
+            <Link to="/examples" className="underline text-emerald-800 hover:text-emerald-700">
               예시
             </Link>
             페이지에서 확인할 수 있습니다.

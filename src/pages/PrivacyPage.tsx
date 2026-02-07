@@ -89,7 +89,7 @@ function PrivacyPage() {
               href="https://policies.google.com/technologies/partner-sites"
               target="_blank"
               rel="noreferrer noopener"
-              className="text-emerald-700 hover:underline"
+              className="underline text-emerald-800 hover:text-emerald-700"
             >
               Google 파트너 사이트 정책
             </a>
@@ -100,7 +100,7 @@ function PrivacyPage() {
               href="https://adssettings.google.com"
               target="_blank"
               rel="noreferrer noopener"
-              className="text-emerald-700 hover:underline"
+              className="underline text-emerald-800 hover:text-emerald-700"
             >
               Google 광고 설정
             </a>
@@ -128,14 +128,14 @@ function PrivacyPage() {
         </p>
         {mailto ? (
           <p className="font-mono text-slate-800">
-            <a href={mailto} className="text-emerald-700 hover:underline">
+            <a href={mailto} className="underline text-emerald-800 hover:text-emerald-700">
               {CONTACT_EMAIL}
             </a>
           </p>
         ) : (
           <p className="text-slate-700">
             문의 이메일은{" "}
-            <Link to="/contact" className="text-emerald-700 hover:underline">
+            <Link to="/contact" className="underline text-emerald-800 hover:text-emerald-700">
               문의하기
             </Link>
             페이지에서 확인할 수 있습니다.

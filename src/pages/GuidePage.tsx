@@ -38,7 +38,7 @@ function GuidePage() {
         </ol>
         <p className="text-[11px] text-slate-500">
           바로 적용해 보고 싶다면{" "}
-          <Link to="/" className="text-emerald-700 hover:underline">
+          <Link to="/" className="underline text-emerald-800 hover:text-emerald-700">
             도구
           </Link>
           에서 원문을 붙여넣고 문단 간격(1~2줄)을 선택해 보세요.
@@ -148,7 +148,7 @@ function GuidePage() {
         </ul>
         <p className="text-[11px] text-slate-500">
           도구 사용 중 “왜 이렇게 변환되나요?” 같은 질문은{" "}
-          <Link to="/faq" className="text-emerald-700 hover:underline">
+          <Link to="/faq" className="underline text-emerald-800 hover:text-emerald-700">
             FAQ
           </Link>
           에 모아두었습니다.
@@ -161,7 +161,7 @@ function GuidePage() {
         </p>
         <Link
           to="/"
-          className="inline-flex items-center gap-1 rounded-md bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-medium px-3 py-1.5 transition-colors"
+          className="inline-flex items-center gap-1 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium px-3 py-1.5 transition-colors"
         >
           줄바꿈 정리 도구 사용하기
         </Link>

@@ -182,15 +182,15 @@ function HomePage() {
             네이버 블로그용으로 문단 사이 줄바꿈을 일정하게 맞춰 가독성을 높여보세요.
           </p>
           <div className="flex flex-wrap items-center gap-2 text-xs">
-            <Link to="/guide" className="text-emerald-700 hover:underline">
+            <Link to="/guide" className="underline text-emerald-800 hover:text-emerald-700">
               가이드 보기
             </Link>
             <span className="text-slate-300">/</span>
-            <Link to="/examples" className="text-emerald-700 hover:underline">
+            <Link to="/examples" className="underline text-emerald-800 hover:text-emerald-700">
               전·후 예시
             </Link>
             <span className="text-slate-300">/</span>
-            <Link to="/faq" className="text-emerald-700 hover:underline">
+            <Link to="/faq" className="underline text-emerald-800 hover:text-emerald-700">
               FAQ
             </Link>
           </div>
@@ -220,7 +220,7 @@ function HomePage() {
               <button
                 type="button"
                 onClick={handleCopy}
-                className="inline-flex items-center gap-1.5 rounded-md bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-medium px-3 py-1.5 transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium px-3 py-1.5 transition-colors"
               >
                 결과 복사
               </button>
@@ -276,7 +276,7 @@ function HomePage() {
             </ol>
             <p className="text-[11px] text-slate-500">
               더 자세한 설명은{" "}
-              <Link to="/faq" className="text-emerald-700 hover:underline">
+              <Link to="/faq" className="underline text-emerald-800 hover:text-emerald-700">
                 FAQ
               </Link>
               에 정리해 두었습니다.
@@ -322,7 +322,7 @@ function HomePage() {
                 적용됩니다.
               </p>
             </div>
-            <Link to="/examples" className="text-xs text-emerald-700 hover:underline">
+            <Link to="/examples" className="text-xs underline text-emerald-800 hover:text-emerald-700">
               전·후 예시 더 보기
             </Link>
           </div>
@@ -371,7 +371,7 @@ function HomePage() {
               </ul>
               <p className="text-[11px] text-slate-500">
                 자세한 체크리스트는{" "}
-                <Link to="/guide" className="text-emerald-700 hover:underline">
+                <Link to="/guide" className="underline text-emerald-800 hover:text-emerald-700">
                   가이드
                 </Link>
                 에 정리했습니다.
@@ -388,7 +388,7 @@ function HomePage() {
               </ul>
               <p className="text-[11px] text-slate-500">
                 실제 전·후 비교는{" "}
-                <Link to="/examples" className="text-emerald-700 hover:underline">
+                <Link to="/examples" className="underline text-emerald-800 hover:text-emerald-700">
                   예시
                 </Link>
                 에서 확인할 수 있어요.
@@ -405,7 +405,7 @@ function HomePage() {
             </p>
             <p className="text-slate-600">
               개인정보 관련 내용은{" "}
-              <Link to="/privacy" className="text-emerald-700 hover:underline">
+              <Link to="/privacy" className="underline text-emerald-800 hover:text-emerald-700">
                 개인정보 처리방침
               </Link>
               에서 확인해 주세요.

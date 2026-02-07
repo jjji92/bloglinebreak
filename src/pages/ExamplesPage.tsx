@@ -89,7 +89,7 @@ function ExamplesPage() {
         </p>
         <p className="text-xs text-slate-600">
           더 자세한 작성 팁은{" "}
-          <Link to="/guide" className="text-emerald-700 hover:underline">
+          <Link to="/guide" className="underline text-emerald-800 hover:text-emerald-700">
             가이드
           </Link>
           에서 확인할 수 있습니다.

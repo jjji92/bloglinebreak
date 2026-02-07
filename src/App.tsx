@@ -41,12 +41,19 @@ const navLinkBase =
 function App() {
   usePageTracking();
   useEffect(() => {
-    const run = () => loadGoogleAnalytics();
-    if (typeof requestIdleCallback !== "undefined") {
-      requestIdleCallback(run, { timeout: 2500 });
-    } else {
-      setTimeout(run, 1);
-    }
+    let loaded = false;
+    const run = () => {
+      if (loaded) return;
+      loaded = true;
+      loadGoogleAnalytics();
+      ["scroll", "click", "keydown", "touchstart"].forEach((ev) =>
+        window.removeEventListener(ev, run)
+      );
+    };
+    const events = ["scroll", "click", "keydown", "touchstart"] as const;
+    events.forEach((ev) => window.addEventListener(ev, run, { once: true, passive: true }));
+    const fallback = setTimeout(run, 4000);
+    return () => clearTimeout(fallback);
   }, []);
   return (
     <div className="min-h-screen flex flex-col">
@@ -61,7 +68,7 @@ function App() {
       <header className="border-b bg-white/80 backdrop-blur">
         <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
           <Link to="/" className="flex items-center gap-2">
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500 text-white text-sm font-semibold">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-emerald-600 text-white text-sm font-semibold">
               NB
             </span>
             <div>
@@ -80,7 +87,7 @@ function App() {
               className={({ isActive }) =>
                 `${navLinkBase} ${
                   isActive
-                    ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+                    ? "bg-emerald-50 text-emerald-800 border-emerald-200"
                     : "text-slate-600 hover:bg-slate-100"
                 }`
               }
@@ -92,7 +99,7 @@ function App() {
               className={({ isActive }) =>
                 `${navLinkBase} ${
                   isActive
-                    ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+                    ? "bg-emerald-50 text-emerald-800 border-emerald-200"
                     : "text-slate-600 hover:bg-slate-100"
                 }`
               }
@@ -104,7 +111,7 @@ function App() {
               className={({ isActive }) =>
                 `${navLinkBase} ${
                   isActive
-                    ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+                    ? "bg-emerald-50 text-emerald-800 border-emerald-200"
                     : "text-slate-600 hover:bg-slate-100"
                 }`
               }
@@ -116,7 +123,7 @@ function App() {
               className={({ isActive }) =>
                 `${navLinkBase} ${
                   isActive
-                    ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+                    ? "bg-emerald-50 text-emerald-800 border-emerald-200"
                     : "text-slate-600 hover:bg-slate-100"
                 }`
               }
@@ -128,7 +135,7 @@ function App() {
               className={({ isActive }) =>
                 `${navLinkBase} ${
                   isActive
-                    ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+                    ? "bg-emerald-50 text-emerald-800 border-emerald-200"
                     : "text-slate-600 hover:bg-slate-100"
                 }`
               }
@@ -140,7 +147,7 @@ function App() {
               className={({ isActive }) =>
                 `${navLinkBase} ${
                   isActive
-                    ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+                    ? "bg-emerald-50 text-emerald-800 border-emerald-200"
                     : "text-slate-600 hover:bg-slate-100"
                 }`
               }
@@ -152,7 +159,7 @@ function App() {
               className={({ isActive }) =>
                 `${navLinkBase} ${
                   isActive
-                    ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+                    ? "bg-emerald-50 text-emerald-800 border-emerald-200"
                     : "text-slate-600 hover:bg-slate-100"
                 }`
               }
@@ -186,7 +193,7 @@ function App() {
                   </p>
                   <Link
                     to="/"
-                    className="inline-flex items-center gap-1 rounded-md bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-medium px-3 py-1.5 transition-colors w-fit"
+                    className="inline-flex items-center gap-1 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium px-3 py-1.5 transition-colors w-fit"
                   >
                     홈으로 이동
                   </Link>

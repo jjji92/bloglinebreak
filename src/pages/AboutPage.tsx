@@ -71,11 +71,11 @@ function AboutPage() {
         <p>
           문의:{" "}
           {mailto ? (
-            <a href={mailto} className="font-mono text-emerald-700 hover:underline">
+            <a href={mailto} className="font-mono underline text-emerald-800 hover:text-emerald-700">
               {CONTACT_EMAIL}
             </a>
           ) : (
-            <Link to="/contact" className="text-emerald-700 hover:underline">
+            <Link to="/contact" className="underline text-emerald-800 hover:text-emerald-700">
               문의하기 페이지
             </Link>
           )}
@@ -91,7 +91,7 @@ function AboutPage() {
         <p>
           본 서비스는 입력한 텍스트를 서버로 전송하지 않고, 브라우저에서만 처리하는
           것을 목표로 합니다. 자세한 내용은{" "}
-          <Link to="/privacy" className="text-emerald-700 hover:underline">
+          <Link to="/privacy" className="underline text-emerald-800 hover:text-emerald-700">
             개인정보 처리방침
           </Link>
           에서 확인할 수 있습니다.
@@ -113,7 +113,7 @@ function AboutPage() {
         </p>
         <Link
           to="/"
-          className="inline-flex items-center gap-1 rounded-md bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-medium px-3 py-1.5 transition-colors"
+          className="inline-flex items-center gap-1 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium px-3 py-1.5 transition-colors"
         >
           도구로 이동
         </Link>

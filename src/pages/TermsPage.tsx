@@ -88,7 +88,7 @@ function TermsPage() {
         </p>
         <p>
           문의:{" "}
-          <Link to="/contact" className="text-emerald-700 hover:underline">
+          <Link to="/contact" className="underline text-emerald-800 hover:text-emerald-700">
             문의하기
           </Link>
         </p>

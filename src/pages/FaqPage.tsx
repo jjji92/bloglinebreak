@@ -69,7 +69,7 @@ function FaqPage() {
           <p className="text-xs text-slate-600 leading-relaxed">
             본 서비스는 입력 텍스트를 <b>브라우저에서만 처리</b>하는 것을 목표로
             합니다. 자세한 설명은{" "}
-            <Link to="/privacy" className="text-emerald-700 hover:underline">
+            <Link to="/privacy" className="underline text-emerald-800 hover:text-emerald-700">
               개인정보 처리방침
             </Link>
             에서 확인해 주세요.
@@ -130,7 +130,7 @@ function FaqPage() {
             과도한 장식은 글을 “광고처럼” 보이게 만들 수 있습니다. 제목·첫 문단에서는
             최소화하고, 강조가 필요하면 번호/소제목/굵은 글씨 같은 구조적 요소를 먼저
             활용해 보세요. 가독성 기준은{" "}
-            <Link to="/guide" className="text-emerald-700 hover:underline">
+            <Link to="/guide" className="underline text-emerald-800 hover:text-emerald-700">
               가이드
             </Link>
             에도 정리해 두었습니다.
@@ -155,11 +155,11 @@ function FaqPage() {
           <p className="text-xs text-slate-600 leading-relaxed">
             아닙니다. 본 서비스는 블로그 글쓰기 편의를 위한 독립적인 도구이며, 네이버 또는
             구글과 공식 제휴 관계가 아닙니다. 운영 정보는{" "}
-            <Link to="/about" className="text-emerald-700 hover:underline">
+            <Link to="/about" className="underline text-emerald-800 hover:text-emerald-700">
               소개
             </Link>
             와{" "}
-            <Link to="/contact" className="text-emerald-700 hover:underline">
+            <Link to="/contact" className="underline text-emerald-800 hover:text-emerald-700">
               문의
             </Link>
             페이지에서 확인할 수 있습니다.
@@ -172,7 +172,7 @@ function FaqPage() {
           </h2>
           <p className="text-xs text-slate-600 leading-relaxed">
             실제 Before/After는{" "}
-            <Link to="/examples" className="text-emerald-700 hover:underline">
+            <Link to="/examples" className="underline text-emerald-800 hover:text-emerald-700">
               예시
             </Link>
             페이지에서 확인할 수 있습니다.
@@ -183,7 +183,7 @@ function FaqPage() {
           <h2 className="text-sm font-semibold text-slate-900">Q. 오류/개선 요청은 어디로 하나요?</h2>
           <p className="text-xs text-slate-600 leading-relaxed">
             버그 제보나 기능 제안은{" "}
-            <Link to="/contact" className="text-emerald-700 hover:underline">
+            <Link to="/contact" className="underline text-emerald-800 hover:text-emerald-700">
               문의하기
             </Link>
             로 보내주세요. 재현 가능한 예시(원문 일부)를 함께 주시면 더 빠르게 확인할 수
