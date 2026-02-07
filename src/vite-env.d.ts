@@ -1,5 +1,9 @@
 /// <reference types="vite/client" />
 
+interface Window {
+  gtag: (...args: unknown[]) => void;
+}
+
 interface ImportMetaEnv {
   readonly VITE_SITE_NAME?: string;
   readonly VITE_SITE_URL?: string;

@@ -1,5 +1,17 @@
-import { Link, NavLink, Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, NavLink, Route, Routes, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+
+function usePageTracking() {
+  const location = useLocation();
+  useEffect(() => {
+    if (typeof window.gtag === "function") {
+      window.gtag("config", "G-X2HV3NQK91", {
+        page_path: location.pathname,
+      });
+    }
+  }, [location]);
+}
 import HomePage from "./pages/HomePage";
 import GuidePage from "./pages/GuidePage";
 import ExamplesPage from "./pages/ExamplesPage";
@@ -13,6 +25,7 @@ const navLinkBase =
   "px-3 py-1.5 text-sm rounded-full transition-colors border border-transparent";
 
 function App() {
+  usePageTracking();
   return (
     <div className="min-h-screen flex flex-col">
       <Helmet>
