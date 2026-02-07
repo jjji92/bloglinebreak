@@ -3,29 +3,33 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import fs from "fs";
 
-function preloadHomePageChunk() {
+function preloadCriticalChunks() {
   return {
-    name: "preload-homepage-chunk",
+    name: "preload-critical-chunks",
     apply: "build",
     writeBundle(options: { dir?: string }, bundle: Record<string, { type?: string }>) {
-      const homeChunk = Object.keys(bundle).find(
-        (name) => name.includes("HomePage") && name.endsWith(".js") && bundle[name].type === "chunk"
+      const chunkNames = Object.keys(bundle).filter(
+        (name) => name.endsWith(".js") && bundle[name].type === "chunk"
       );
-      if (!homeChunk) return;
+      const homeChunk = chunkNames.find((n) => n.includes("HomePage"));
+      const siteConfigChunk = chunkNames.find((n) => n.includes("siteConfig"));
+      const toPreload = [homeChunk, siteConfigChunk].filter(Boolean) as string[];
+      if (toPreload.length === 0) return;
       const outDir = options.dir ?? "dist";
       const indexPath = path.join(outDir, "index.html");
       if (!fs.existsSync(indexPath)) return;
-      const href = "/" + homeChunk.replace(/\\/g, "/");
-      const preload = `    <link rel="modulepreload" href="${href}">`;
+      const preloads = toPreload
+        .map((name) => `    <link rel="modulepreload" href="/${name.replace(/\\/g, "/")}">`)
+        .join("\n");
       const html = fs.readFileSync(indexPath, "utf-8");
-      const newHtml = html.replace("</head>", `${preload}\n  </head>`);
+      const newHtml = html.replace("</head>", `${preloads}\n  </head>`);
       fs.writeFileSync(indexPath, newHtml);
     },
   };
 }
 
 export default defineConfig({
-  plugins: [react(), preloadHomePageChunk()],
+  plugins: [react(), preloadCriticalChunks()],
   server: {
     port: 5173
   }
