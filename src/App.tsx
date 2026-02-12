@@ -4,6 +4,15 @@ import { Helmet } from "react-helmet-async";
 
 const GA_ID = "G-X2HV3NQK91";
 
+function loadAdSense() {
+  if (document.querySelector('script[src*="adsbygoogle"]')) return;
+  const s = document.createElement("script");
+  s.async = true;
+  s.crossOrigin = "anonymous";
+  s.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2166993809699431";
+  document.head.appendChild(s);
+}
+
 function loadGoogleAnalytics() {
   if (typeof window !== "undefined" && (window as Window & { gtag?: unknown }).gtag) return;
   (window as Window & { dataLayer?: unknown[] }).dataLayer = (window as Window & { dataLayer?: unknown[] }).dataLayer || [];
@@ -127,6 +136,7 @@ function App() {
       if (loaded) return;
       loaded = true;
       loadGoogleAnalytics();
+      loadAdSense();
       ["scroll", "click", "keydown", "touchstart"].forEach((ev) =>
         window.removeEventListener(ev, run)
       );
@@ -240,7 +250,7 @@ function App() {
       </header>
 
       <main className="flex-1">
-        <Suspense fallback={null}>
+        <Suspense fallback={<div className="max-w-5xl mx-auto px-4 py-6" style={{ minHeight: "60vh" }} />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/guide" element={<GuidePage />} />
