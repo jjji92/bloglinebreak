@@ -125,7 +125,7 @@ function HomePage() {
   const canonical = getCanonicalUrl("/");
 
   const output = useMemo(
-    () => formatNaverBlogText(input, paragraphSpacing),
+    () => formatNaverBlogText(input.replace(/\n{1,}/g, "\n\n"), paragraphSpacing),
     [input, paragraphSpacing]
   );
 
