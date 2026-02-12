@@ -1,4 +1,4 @@
-import { useEffect, lazy, Suspense } from "react";
+import { useEffect, useRef, lazy, Suspense, useState } from "react";
 import { Link, NavLink, Route, Routes, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
@@ -34,9 +34,90 @@ const TermsPage = lazy(() => import("./pages/TermsPage"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
 const FaqPage = lazy(() => import("./pages/FaqPage"));
+const CharacterCounterPage = lazy(() => import("./pages/CharacterCounterPage"));
+const SpecialCharactersPage = lazy(() => import("./pages/SpecialCharactersPage"));
+const HashtagGeneratorPage = lazy(() => import("./pages/HashtagGeneratorPage"));
 
 const navLinkBase =
   "px-3 py-1.5 text-sm rounded-full transition-colors border border-transparent";
+
+const TOOL_LINKS = [
+  { to: "/", label: "줄바꿈 정리", end: true },
+  { to: "/counter", label: "글자수 세기" },
+  { to: "/special-characters", label: "특수문자 모음" },
+  { to: "/hashtag", label: "해시태그 생성기" },
+];
+
+function ToolsDropdown() {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const location = useLocation();
+
+  const isToolActive = TOOL_LINKS.some((link) =>
+    link.end ? location.pathname === link.to : location.pathname.startsWith(link.to)
+  );
+
+  // close on route change
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
+
+  // close on outside click
+  useEffect(() => {
+    if (!open) return;
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [open]);
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className={`${navLinkBase} inline-flex items-center gap-1 ${
+          isToolActive
+            ? "bg-emerald-50 text-emerald-800 border-emerald-200"
+            : "text-slate-600 hover:bg-slate-100"
+        }`}
+      >
+        도구
+        <svg
+          className={`w-3 h-3 transition-transform ${open ? "rotate-180" : ""}`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      {open && (
+        <div className="absolute left-0 top-full mt-1 w-44 rounded-lg border bg-white shadow-lg py-1 z-50">
+          {TOOL_LINKS.map((link) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              end={link.end}
+              className={({ isActive }) =>
+                `block px-3 py-2 text-sm transition-colors ${
+                  isActive
+                    ? "bg-emerald-50 text-emerald-800 font-medium"
+                    : "text-slate-700 hover:bg-slate-50"
+                }`
+              }
+            >
+              {link.label}
+            </NavLink>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 function App() {
   usePageTracking();
@@ -65,7 +146,7 @@ function App() {
         />
       </Helmet>
 
-      <header className="border-b bg-white/80 backdrop-blur">
+      <header className="relative z-20 border-b bg-white/80 backdrop-blur">
         <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
           <Link to="/" className="flex items-center gap-2">
             <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-emerald-600 text-white text-sm font-semibold">
@@ -81,19 +162,7 @@ function App() {
             </div>
           </Link>
           <nav className="flex items-center gap-1 text-sm">
-            <NavLink
-              to="/"
-              end
-              className={({ isActive }) =>
-                `${navLinkBase} ${
-                  isActive
-                    ? "bg-emerald-50 text-emerald-800 border-emerald-200"
-                    : "text-slate-600 hover:bg-slate-100"
-                }`
-              }
-            >
-              도구
-            </NavLink>
+            <ToolsDropdown />
             <NavLink
               to="/guide"
               className={({ isActive }) =>
@@ -181,6 +250,9 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/faq" element={<FaqPage />} />
+            <Route path="/counter" element={<CharacterCounterPage />} />
+            <Route path="/special-characters" element={<SpecialCharactersPage />} />
+            <Route path="/hashtag" element={<HashtagGeneratorPage />} />
             <Route
               path="*"
               element={
