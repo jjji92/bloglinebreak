@@ -46,6 +46,10 @@ const FaqPage = lazy(() => import("./pages/FaqPage"));
 const CharacterCounterPage = lazy(() => import("./pages/CharacterCounterPage"));
 const SpecialCharactersPage = lazy(() => import("./pages/SpecialCharactersPage"));
 const HashtagGeneratorPage = lazy(() => import("./pages/HashtagGeneratorPage"));
+const TipsIndexPage = lazy(() => import("./pages/TipsIndexPage"));
+const TipsSeoPage = lazy(() => import("./pages/TipsSeoPage"));
+const TipsReadtimePage = lazy(() => import("./pages/TipsReadtimePage"));
+const TipsMonetizePage = lazy(() => import("./pages/TipsMonetizePage"));
 
 const navLinkBase =
   "px-3 py-1.5 text-sm rounded-full transition-colors border border-transparent";
@@ -174,6 +178,18 @@ function App() {
           <nav className="flex items-center gap-1 text-sm">
             <ToolsDropdown />
             <NavLink
+              to="/tips"
+              className={({ isActive }) =>
+                `${navLinkBase} ${
+                  isActive
+                    ? "bg-emerald-50 text-emerald-800 border-emerald-200"
+                    : "text-slate-600 hover:bg-slate-100"
+                }`
+              }
+            >
+              블로그 팁
+            </NavLink>
+            <NavLink
               to="/guide"
               className={({ isActive }) =>
                 `${navLinkBase} ${
@@ -263,6 +279,10 @@ function App() {
             <Route path="/counter" element={<CharacterCounterPage />} />
             <Route path="/special-characters" element={<SpecialCharactersPage />} />
             <Route path="/hashtag" element={<HashtagGeneratorPage />} />
+            <Route path="/tips" element={<TipsIndexPage />} />
+            <Route path="/tips/naver-blog-seo" element={<TipsSeoPage />} />
+            <Route path="/tips/blog-readtime" element={<TipsReadtimePage />} />
+            <Route path="/tips/blog-monetize" element={<TipsMonetizePage />} />
             <Route
               path="*"
               element={
