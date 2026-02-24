@@ -43,6 +43,30 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.bloglinebreak.com/tips</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.bloglinebreak.com/tips/naver-blog-seo</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.bloglinebreak.com/tips/blog-readtime</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.bloglinebreak.com/tips/blog-monetize</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.bloglinebreak.com/about</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>yearly</changefreq>
