@@ -2,8 +2,27 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { SITE_NAME, getCanonicalUrl } from "../siteConfig";
 
+const FAQ_ITEMS = [
+  { q: "여기서 \"문단\"은 무엇인가요?", a: "본 서비스에서는 빈 줄(엔터 두 번)을 문단 구분으로 봅니다. 문단을 나누고 싶다면 문장 사이에 빈 줄을 한 줄 넣어 주세요. 변환 결과에서는 문단 사이에 선택한 만큼의 빈 줄(여백)이 자동으로 들어갑니다." },
+  { q: "문단 사이 줄바꿈 1줄/2줄/3줄은 무슨 차이인가요?", a: "\"문단 사이 줄바꿈 개수\"는 문단과 문단 사이에 넣어주는 빈 줄의 개수입니다. 짧고 가벼운 글은 1줄, 정보량이 많은 글은 2줄이 읽기 편한 경우가 많습니다." },
+  { q: "입력한 글이 서버로 전송되거나 저장되나요?", a: "본 서비스는 입력 텍스트를 브라우저에서만 처리합니다. 서버로 전송되거나 저장되지 않습니다." },
+  { q: "따옴표 안 줄바꿈은 왜 공백으로 바꾸나요?", a: "인용문(따옴표 안)은 문장 흐름이 끊기면 의미 전달이 어려워질 수 있어, 따옴표 안의 줄바꿈은 공백으로 정리해 문장이 자연스럽게 이어지도록 처리합니다." },
+  { q: "네이버 블로그에 붙여넣었더니 줄바꿈이 달라졌어요.", a: "붙여넣기 환경(PC/모바일, 에디터 종류)에 따라 공백/줄바꿈 처리 방식이 다를 수 있습니다. 가능하면 PC에서 일반 붙여넣기로 먼저 확인하고, 결과가 어색하면 문단 사이 여백을 1줄로 낮추거나 원문에서 불필요한 빈 줄을 정리한 뒤 다시 변환해 보세요." },
+  { q: "협찬/제공 문구는 어디에 넣는 게 좋나요?", a: "일반적으로 글 초반(첫 문단 근처)에 \"제공 내역 + 솔직 후기\"를 짧게 적는 것이 읽는 사람에게도 명확합니다. 홈 화면의 \"체험단/협찬 문구\" 템플릿을 불러와서 상황에 맞게 수정해 사용해 보세요." },
+  { q: "이 사이트는 네이버/구글과 제휴된 서비스인가요?", a: "아닙니다. 본 서비스는 블로그 글쓰기 편의를 위한 독립적인 도구이며, 네이버 또는 구글과 공식 제휴 관계가 아닙니다." },
+];
+
 function FaqPage() {
   const canonical = getCanonicalUrl("/faq");
+  const faqSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": FAQ_ITEMS.map((item) => ({
+      "@type": "Question",
+      "name": item.q,
+      "acceptedAnswer": { "@type": "Answer", "text": item.a },
+    })),
+  });
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-6 space-y-6">
@@ -15,6 +34,7 @@ function FaqPage() {
         />
         {canonical ? <link rel="canonical" href={canonical} /> : null}
         {canonical ? <meta property="og:url" content={canonical} /> : null}
+        <script type="application/ld+json">{faqSchema}</script>
       </Helmet>
 
       <header className="space-y-2">
