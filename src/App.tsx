@@ -47,9 +47,12 @@ const CharacterCounterPage = lazy(() => import("./pages/CharacterCounterPage"));
 const SpecialCharactersPage = lazy(() => import("./pages/SpecialCharactersPage"));
 const HashtagGeneratorPage = lazy(() => import("./pages/HashtagGeneratorPage"));
 const TipsIndexPage = lazy(() => import("./pages/TipsIndexPage"));
+const TipsBlogStructurePage = lazy(() => import("./pages/TipsBlogStructurePage"));
 const TipsSeoPage = lazy(() => import("./pages/TipsSeoPage"));
 const TipsReadtimePage = lazy(() => import("./pages/TipsReadtimePage"));
+const TipsBlogCategoryPage = lazy(() => import("./pages/TipsBlogCategoryPage"));
 const TipsMonetizePage = lazy(() => import("./pages/TipsMonetizePage"));
+const TipsAdpostPage = lazy(() => import("./pages/TipsAdpostPage"));
 
 const navLinkBase =
   "px-3 py-1.5 text-sm rounded-full transition-colors border border-transparent";
@@ -280,9 +283,12 @@ function App() {
             <Route path="/special-characters" element={<SpecialCharactersPage />} />
             <Route path="/hashtag" element={<HashtagGeneratorPage />} />
             <Route path="/tips" element={<TipsIndexPage />} />
+            <Route path="/tips/blog-post-structure" element={<TipsBlogStructurePage />} />
             <Route path="/tips/naver-blog-seo" element={<TipsSeoPage />} />
             <Route path="/tips/blog-readtime" element={<TipsReadtimePage />} />
+            <Route path="/tips/blog-category" element={<TipsBlogCategoryPage />} />
             <Route path="/tips/blog-monetize" element={<TipsMonetizePage />} />
+            <Route path="/tips/adpost-guide" element={<TipsAdpostPage />} />
             <Route
               path="*"
               element={

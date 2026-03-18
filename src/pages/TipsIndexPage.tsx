@@ -4,6 +4,12 @@ import { getCanonicalUrl } from "../siteConfig";
 
 const ARTICLES = [
   {
+    to: "/tips/blog-post-structure",
+    title: "네이버 블로그 글 구조 완전 가이드",
+    desc: "제목 작성법, 도입부 후킹, 소제목 배치, 본문 구성, 마무리까지 읽히는 블로그 글의 구조를 단계별로 정리했습니다.",
+    tag: "글쓰기",
+  },
+  {
     to: "/tips/naver-blog-seo",
     title: "네이버 블로그 상위노출 하는 법",
     desc: "C-rank·DIA 알고리즘 이해부터 제목 키워드 전략, 글 길이, 발행 주기까지 검색 상단에 노출되는 실전 방법을 정리했습니다.",
@@ -16,9 +22,21 @@ const ARTICLES = [
     tag: "글쓰기",
   },
   {
+    to: "/tips/blog-category",
+    title: "네이버 블로그 카테고리 설정 완전 가이드",
+    desc: "주제 선정 방법, 대분류·소분류 구성, 카테고리별 글 수 기준까지 처음에 잘 잡아두면 이후 운영이 훨씬 수월해집니다.",
+    tag: "운영",
+  },
+  {
     to: "/tips/blog-monetize",
     title: "네이버 블로그 수익화 완전 가이드",
     desc: "애드포스트, 체험단·협찬, 원고료, 외부 수익 연동까지 블로그로 돈 버는 방법을 단계별로 설명합니다.",
+    tag: "수익화",
+  },
+  {
+    to: "/tips/adpost-guide",
+    title: "네이버 애드포스트 신청 방법 및 수익 구조",
+    desc: "애드포스트 신청 조건, 승인 높이는 방법, 수익 구조와 실제 수익 예시, 수익 높이는 팁까지 정리했습니다.",
     tag: "수익화",
   },
 ];
